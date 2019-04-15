@@ -214,16 +214,27 @@ You know whats bananas? LFO. Thats what. You can use an oscillator to modify pro
 #### \<Song />
 
 **playing** (_boolean_) : Whether the song should start playing automatically
-
 **tempo** (_number_) : Your song tempo
 
---
+```js
+Props = {
+  	children?: any;
+  	playing?: boolean;
+  	tempo: number;
+	};
+defaultProps = {
+    	playing: false,
+    	tempo: 90,
+  	}
+```	
+---
 
 #### \<Sequencer />
 
 **bars** (_number_) : Number of bars in your sequence
-
 **resolution** (_number_) : Step resolution for your sequence
+
+```js
 
 ### Instruments
 
@@ -245,9 +256,7 @@ envelope={{
 ```
 
 **gain** (_number_) (0 - 1): A number specifying instrument gain
-
 **glide** (_number_) : Portamento length for overlapping notes
-
 **steps** (_array_) : Array of step arrays for the notes to be played at
 
 ```js
