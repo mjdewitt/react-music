@@ -318,11 +318,11 @@ steps={[
 
 #### \<Bitcrusher />
 
-**bits** (_number_)
+**bits** (_number_) (int 1 - 16)
 
-**bufferSize** (_number_)
+**bufferSize** (_number_) (int ex: 4096)
 
-**normfreq** (_number_)
+**normfreq** (_number_) (float 0 -1)
 
 
 --
@@ -394,11 +394,11 @@ steps={[
 
 #### \<MoogFilter />
 
-**bufferSize** (_number_)
+**bufferSize** (_number_) (int ex: 4096)
 
-**cutoff** (_number_)
+**cutoff** (_number_) (float 0 - 1)
 
-**resonance** (_number_)
+**resonance** (_number_) (float 0 - 4)
 
 
 --
