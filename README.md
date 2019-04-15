@@ -212,7 +212,6 @@ You know whats bananas? LFO. Thats what. You can use an oscillator to modify pro
 ---
 
 #### \<Song />
-
 **playing** (_boolean_) : Whether the song should start playing automatically
 **tempo** (_number_) : Your song tempo
 
@@ -235,60 +234,104 @@ defaultProps = {
 **resolution** (_number_) : Step resolution for your sequence
 
 ```js
-
+Props = {
+  	bars?: number;
+  	children?: any;
+  	resolution?: number;
+	};
+defaultProps = {
+    bars: 1,
+    resolution: 16,
+  };
+```  
 ### Instruments
 
 ---
 
 #### \<Monosynth />
-
 **busses** (_array_) : An array of `Bus` id strings to send output to
-
 **envelope** (_object_) : An object specifying envelope settings
-
-```js
-envelope={{
+ ```js
+  envelope={{
   attack: 0.1,
   sustain: 0.3,
   decay: 20,
   release: 0.5
 }}
 ```
-
 **gain** (_number_) (0 - 1): A number specifying instrument gain
 **glide** (_number_) : Portamento length for overlapping notes
 **steps** (_array_) : Array of step arrays for the notes to be played at
+ ```js
+ steps={[
+            [0, 4, "c3"],
+            [4, 4, "c4"],
+          ]}
+```	  
+**transpose** (_number_) : Positive or negative number for transposition of notes
+**type** (_string_) : Oscillator type. Accepts `square`, `triangle`, `sawtooth` & `sine`
 
 ```js
-steps={[
-  [0, 2, "a2"]
-]}
+Envelope = {
+  	attack?: number;
+  	decay?: number;
+  	sustain?: number;
+  	release?: number;
+	};
+OscillatorType = 'sine' | 'square' | 'sawtooth' | 'triangle';
+Props = {
+  	busses: Array<string>;
+  	children: any;
+  	envelope: Envelope;
+  	gain?: number;
+  	glide?: number;
+  	steps: Array<any>;
+  	transpose?: number;
+  	type: OscillatorType;
+	};
+defaultProps = {
+    	envelope: {
+      	attack: 0.01,
+      	decay: 0.2,
+      	sustain: 0.2,
+      	release: 0.2,
+    	},
+    gain: 0.5,
+    glide: 0.1,
+    transpose: 0,
+  };	
 ```
 
-**transpose** (_number_) : Positive or negative number for transposition of notes
-
-**type** (_string_) : Oscillator type. Accepts `square`, `triangle`, `sawtooth` & `sine`
 
 --
 
 #### \<Sampler />
-
 **busses** (_array_) : An array of `Bus` id strings to send output to
-
 **detune** (_number_) : A number (in cents) specifying instrument detune
-
 **gain** (_number_) (0 - 1): A number specifying instrument gain
-
 **sample** (_string_) : Path to an audio file
-
 **steps** (_array_) : Array of step indexes for the sample to be played at. Accepts arrays for steps in order to provide a second argument for index based detune (in between -12 & 12).
-
+ ```js
+steps={[0 0, 4 0, 8 0, 12 -12]}
+```
+ ```js
+Props = {
+  	busses: Array<string>;
+  	children?: any;
+  	detune?: number;
+  	gain?: number;
+  	sample: string;
+  	steps: Array<any>;
+	};
+defaultProps = {
+    	detune: 0,
+    	gain: 0.5,
+  	};
+```
 --
 
 #### \<Synth />
-
 **busses** (_array_) : An array of `Bus` id strings to send output to
-
 **envelope** (_object_) : An object specifying envelope settings
 
 ```js
@@ -301,7 +344,6 @@ envelope={{
 ```
 
 **gain** (_number_) (float 0 - 1): A number specifying instrument gain
-
 **steps** (_array_) : Array of step arrays for the notes to be played at. Accepts in array in the `[ step, duration, note || [notes] ]` format.
 
 ```js
@@ -317,177 +359,326 @@ steps={[
 ```
 
 **transpose** (_number_) : Positive or negative number for transposition of notes
-
 **type** (_string_) : Oscillator type. Accepts `square`, `triangle`, `sawtooth` & `sine`
 
+```js
+Envelope = {
+  	attack?: number;
+  	decay?: number;
+  	sustain?: number;
+  	release?: number;
+	};
 
+OscillatorType = 'sine' | 'square' | 'sawtooth' | 'triangle';
+
+Props = {
+  	busses: Array<string>;
+  	children: any;
+  	envelope: Envelope;
+  	gain?: number;
+  	steps: Array<any>;
+  	transpose?: number;
+  	type: OscillatorType;
+	};
+defaultProps = {
+      	envelope: {
+      	attack: 0.01,
+      	decay: 0.2,
+      	sustain: 0.2,
+      	release: 0.2,
+    	},
+    gain: 0.5,
+    transpose: 0,
+    };
+  ```
 ### Effects
 
 ---
 
 #### \<Bitcrusher />
-
 **bits** (_number_) (int 1 - 16)
-
 **bufferSize** (_number_) (int ex: 4096)
-
 **normfreq** (_number_) (float 0 -1)
 
-
+```js
+propTypes = {
+    bits: PropTypes.number,
+    bufferSize: PropTypes.number,
+    children: PropTypes.node,
+    normfreq: PropTypes.number,
+  };
+defaultProps = {
+    bits: 8,
+    bufferSize: 256,
+    normfreq: 0.1,
+    };
+  ```    
 --
 
 #### \<Chorus />
-
 **bypass** (_number_)
-
 **delay** (_number_)
-
 **feedback** (_number_)
-
 **rate** (_number_)
-
-
+```js
+Props = {
+  bypass?: number;
+  children?: any;
+  delay?: number;
+  feedback?: number;
+  rate?: number;
+};
+defaultProps = {
+    bypass: 0,
+    delay: 0.0045,
+    feedback: 0.2,
+    rate: 1.5,
+  };
+  ``` 
 --
 
 #### \<Compressor />
-
 **attack** (_number_)
-
 **knee** (_number_)
-
 **ratio** (_number_)
-
 **release** (_number_)
-
 **threshold** (_number_)
-
-
+```js
+Props = {
+  attack?: number;
+  children?: any;
+  knee?: number;
+  ratio?: number;
+  release?: number;
+  threshold?: number;
+};
+defaultProps = {
+    attack: 0.003,
+    knee: 32,
+    ratio: 12,
+    release: 0.25,
+    threshold: -24,
+  };
+  ``` 
 --
 
 #### \<Delay />
-
 **bypass** (_number_)
-
 **cutoff** (_number_)
-
 **delayTime** (_number_)
-
 **dryLevel** (_number_)
-
 **feedback** (_number_)
-
 **wetLevel** (_number_)
-
-
+```js
+Props = {
+  bypass?: number;
+  children?: any;
+  cutoff?: number;
+  delayTime?: number;
+  dryLevel?: number;
+  feedback?: number;
+  wetLevel?: number;
+};
+defaultProps = {
+    bypass: 0,
+    cutoff: 2000,
+    delayTime: 150,
+    dryLevel: 1,
+    feedback: 0.45,
+    wetLevel: 0.25,
+  };
+  ```
 --
 
 #### \<Filter />
-
 **Q** (_number_)
-
 **frequency** (_number_)
-
 **gain** (_number_) (float 0 - 1)
-
 **type** (_string_)
-
-
+```js
+type  'lowpass' | 'highpass' | 'bandpass' | 'lowshelf' | 'highshelf' | 'peaking' | 'notch' | 'allpass'; 
+Props = {
+	children?: any;
+  	frequency?: number;
+  	gain?: number;
+ 	type?: BiquadFilterType;
+	};     
+defaultProps = {
+    	frequency: 2000,
+    	gain: 0,
+    	type: 'lowpass',
+  	};
+```
 --
 
 #### \<Gain />
-
 **amount** (_number_) (float 0 - 1)
-
-
+```js
+Props = {
+  amount?: number;
+  children?: any;
+};
+defaultProps = {
+    amount: 1.0,
+  };
+```
 --
 
 #### \<MoogFilter />
-
 **bufferSize** (_number_) (int ex: 4096)
-
 **cutoff** (_number_) (float 0 - 1)
-
 **resonance** (_number_) (float 0 - 4)
-
+```js
+Props = {
+  	bufferSize?: number;
+  	children?: any;
+  	cutoff?: number;
+  	resonance?: number;
+	};
+defaultProps = {
+    	bufferSize: 256,
+    	cutoff: 0.065,
+    	resonance: 3.5,
+  	};
+```
 
 --
 
 #### \<Overdrive />
-
 **algorithmIndex** (_number_)
-
 **bypass** (_number_)
-
 **curveAmount** (_number_)
-
 **drive** (_number_)
-
 **outputGain** (_number_) (float 0 - 1)
-
+```js
+Props = {
+  	algorithmIndex?: number;
+  	bypass?: number;
+  	children?: any;
+  	curveAmount?: number;
+  	drive?: number;
+  	outputGain?: number;
+	};
+defaultProps = {
+    	algorithmIndex: 0,
+    	bypass: 0,
+    	curveAmount: 1,
+    	drive: 0.7,
+    	outputGain: 0.5,
+  	};	
+```
 --
 
 #### \<PingPong />
-
 **delayTimeLeft** (_number_)
-
 **delayTimeRight** (_number_)
-
 **feedback** (_number_)
-
 **wetLevel** (_number_)
-
-
+```js
+Props = {
+  	children?: any;
+  	delayTimeLeft?: number;
+  	delayTimeRight?: number;
+  	feedback?: number;
+  	wetLevel?: number;
+	};
+defaultProps = {
+    	delayTimeLeft: 150,
+    	delayTimeRight: 200,
+    	feedback: 0.3,
+    	wetLevel: 0.5,
+  	};
+```
 --
 
 #### \<Reverb />
-
 **bypass** (_number_)
-
 **dryLevel** (_number_)
-
 **highCut** (_number_)
-
 **impulse** (_string_)
-
 **level** (_number_)
-
 **lowCut** (_number_)
-
 **wetLevel** (_number_)
-
-
+```js
+Props = {
+ 	 bypass?: number;
+ 	 children?: any;
+ 	 dryLevel?: number;
+	 highCut?: number;
+	 impulse?: string;
+ 	 level?: number;
+ 	 lowCut?: number;
+ 	 wetLevel?: number;
+	};
+defaultProps = {
+    	bypass: 0,
+    	dryLevel: 0.5,
+    	highCut: 22050,
+    	impulse: 'reverb/room.wav',
+    	level: 1,
+    	lowCut: 20,
+    	wetLevel: 1,
+  	};
+```
 ### Special
 
 ---
 
 #### \<Analyser />
-
 **fftSize** (_number_) : FFT Size value
-
 **onAudioProcess** (_function_) : Callback function with audio processing data
-
 **smoothingTimeConstant** (_number_) : Smoothing time constant
-
+```js
+Props = {
+  children?: any;
+  fftSize?: number;
+  onAudioProcess?: Function;
+  smoothingTimeConstant?: number;
+};
+defaultProps = {
+   fftSize: 128,
+   onAudioProcess: () => {},
+   smoothingTimeConstant: 0.3,
+  };
+```
 --
 
 #### \<Bus />
-
 **gain** (_number_) (float 0 - 1) : A number specifying Bus gain
-
 **id** (_string_) : Bus ID
-
+```js
+Props = {
+  children?: any;
+  gain?: number;
+  id: string;
+};
+defaultProps = {
+  gain: 0.5,
+  };
+```
 --
 
 #### \<LFO />
-
 **connect** (_function_) : LFO property selection function
-
 **frequency** (_number_) : LFO frequency
-
 **gain** (_number_) (float 0 - 1) : A number specifying LFO gain
-
 **type** (_string_) : Oscillator type. Accepts `square`, `triangle`, `sawtooth` & `sine`
-
+```js
+OscillatorType = 'sine' | 'square' | 'sawtooth' | 'triangle';
+Props = {
+  children?: any;
+  connect: Function;
+  frequency?: number;
+  gain?: number;
+  type?: OscillatorType;
+  };
+defaultProps = {
+  connect: (node) => node.gain,
+  frequency: 1,
+  gain: 0.5,
+  type: 'sine',
+  }; 
+```
 
 ## Known Issues & Roadmap
 
