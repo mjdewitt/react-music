@@ -213,6 +213,7 @@ You know whats bananas? LFO. Thats what. You can use an oscillator to modify pro
 
 #### \<Song />
 **playing** (_boolean_) : Whether the song should start playing automatically
+
 **tempo** (_number_) : Your song tempo
 
 ```js
@@ -231,6 +232,7 @@ defaultProps = {
 #### \<Sequencer />
 
 **bars** (_number_) : Number of bars in your sequence
+
 **resolution** (_number_) : Step resolution for your sequence
 
 ```js
@@ -250,6 +252,7 @@ defaultProps = {
 
 #### \<Monosynth />
 **busses** (_array_) : An array of `Bus` id strings to send output to
+
 **envelope** (_object_) : An object specifying envelope settings
  ```js
   envelope={{
@@ -260,7 +263,9 @@ defaultProps = {
 }}
 ```
 **gain** (_number_) (0 - 1): A number specifying instrument gain
+
 **glide** (_number_) : Portamento length for overlapping notes
+
 **steps** (_array_) : Array of step arrays for the notes to be played at
  ```js
  steps={[
@@ -269,6 +274,7 @@ defaultProps = {
           ]}
 ```	  
 **transpose** (_number_) : Positive or negative number for transposition of notes
+
 **type** (_string_) : Oscillator type. Accepts `square`, `triangle`, `sawtooth` & `sine`
 
 ```js
@@ -307,9 +313,13 @@ defaultProps = {
 
 #### \<Sampler />
 **busses** (_array_) : An array of `Bus` id strings to send output to
+
 **detune** (_number_) : A number (in cents) specifying instrument detune
+
 **gain** (_number_) (0 - 1): A number specifying instrument gain
+
 **sample** (_string_) : Path to an audio file
+
 **steps** (_array_) : Array of step indexes for the sample to be played at. Accepts arrays for steps in order to provide a second argument for index based detune (in between -12 & 12).
  ```js
 steps={[0 0, 4 0, 8 0, 12 -12]}
@@ -332,6 +342,7 @@ defaultProps = {
 
 #### \<Synth />
 **busses** (_array_) : An array of `Bus` id strings to send output to
+
 **envelope** (_object_) : An object specifying envelope settings
 
 ```js
@@ -344,6 +355,7 @@ envelope={{
 ```
 
 **gain** (_number_) (float 0 - 1): A number specifying instrument gain
+
 **steps** (_array_) : Array of step arrays for the notes to be played at. Accepts in array in the `[ step, duration, note || [notes] ]` format.
 
 ```js
@@ -359,6 +371,7 @@ steps={[
 ```
 
 **transpose** (_number_) : Positive or negative number for transposition of notes
+
 **type** (_string_) : Oscillator type. Accepts `square`, `triangle`, `sawtooth` & `sine`
 
 ```js
@@ -397,7 +410,9 @@ defaultProps = {
 
 #### \<Bitcrusher />
 **bits** (_number_) (int 1 - 16)
+
 **bufferSize** (_number_) (int ex: 4096)
+
 **normfreq** (_number_) (float 0 -1)
 
 ```js
@@ -417,8 +432,11 @@ defaultProps = {
 
 #### \<Chorus />
 **bypass** (_number_)
+
 **delay** (_number_)
+
 **feedback** (_number_)
+
 **rate** (_number_)
 ```js
 Props = {
@@ -439,9 +457,13 @@ defaultProps = {
 
 #### \<Compressor />
 **attack** (_number_)
+
 **knee** (_number_)
+
 **ratio** (_number_)
+
 **release** (_number_)
+
 **threshold** (_number_)
 ```js
 Props = {
@@ -464,10 +486,15 @@ defaultProps = {
 
 #### \<Delay />
 **bypass** (_number_)
+
 **cutoff** (_number_)
+
 **delayTime** (_number_)
+
 **dryLevel** (_number_)
+
 **feedback** (_number_)
+
 **wetLevel** (_number_)
 ```js
 Props = {
@@ -492,8 +519,11 @@ defaultProps = {
 
 #### \<Filter />
 **Q** (_number_)
+
 **frequency** (_number_)
+
 **gain** (_number_) (float 0 - 1)
+
 **type** (_string_)
 ```js
 type  'lowpass' | 'highpass' | 'bandpass' | 'lowshelf' | 'highshelf' | 'peaking' | 'notch' | 'allpass'; 
@@ -526,7 +556,9 @@ defaultProps = {
 
 #### \<MoogFilter />
 **bufferSize** (_number_) (int ex: 4096)
+
 **cutoff** (_number_) (float 0 - 1)
+
 **resonance** (_number_) (float 0 - 4)
 ```js
 Props = {
@@ -546,9 +578,13 @@ defaultProps = {
 
 #### \<Overdrive />
 **algorithmIndex** (_number_)
+
 **bypass** (_number_)
+
 **curveAmount** (_number_)
+
 **drive** (_number_)
+
 **outputGain** (_number_) (float 0 - 1)
 ```js
 Props = {
@@ -571,8 +607,11 @@ defaultProps = {
 
 #### \<PingPong />
 **delayTimeLeft** (_number_)
+
 **delayTimeRight** (_number_)
+
 **feedback** (_number_)
+
 **wetLevel** (_number_)
 ```js
 Props = {
@@ -593,11 +632,17 @@ defaultProps = {
 
 #### \<Reverb />
 **bypass** (_number_)
+
 **dryLevel** (_number_)
+
 **highCut** (_number_)
+
 **impulse** (_string_)
+
 **level** (_number_)
+
 **lowCut** (_number_)
+
 **wetLevel** (_number_)
 ```js
 Props = {
@@ -626,7 +671,9 @@ defaultProps = {
 
 #### \<Analyser />
 **fftSize** (_number_) : FFT Size value
+
 **onAudioProcess** (_function_) : Callback function with audio processing data
+
 **smoothingTimeConstant** (_number_) : Smoothing time constant
 ```js
 Props = {
@@ -645,6 +692,7 @@ defaultProps = {
 
 #### \<Bus />
 **gain** (_number_) (float 0 - 1) : A number specifying Bus gain
+
 **id** (_string_) : Bus ID
 ```js
 Props = {
@@ -660,8 +708,11 @@ defaultProps = {
 
 #### \<LFO />
 **connect** (_function_) : LFO property selection function
+
 **frequency** (_number_) : LFO frequency
+
 **gain** (_number_) (float 0 - 1) : A number specifying LFO gain
+
 **type** (_string_) : Oscillator type. Accepts `square`, `triangle`, `sawtooth` & `sine`
 ```js
 OscillatorType = 'sine' | 'square' | 'sawtooth' | 'triangle';
