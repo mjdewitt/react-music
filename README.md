@@ -244,7 +244,7 @@ envelope={{
 }}
 ```
 
-**gain** (_number_) : A number specifying instrument gain
+**gain** (_number_) (0 - 1): A number specifying instrument gain
 
 **glide** (_number_) : Portamento length for overlapping notes
 
@@ -268,7 +268,7 @@ steps={[
 
 **detune** (_number_) : A number (in cents) specifying instrument detune
 
-**gain** (_number_) : A number specifying instrument gain
+**gain** (_number_) (0 - 1): A number specifying instrument gain
 
 **sample** (_string_) : Path to an audio file
 
@@ -291,7 +291,7 @@ envelope={{
 }}
 ```
 
-**gain** (_number_) : A number specifying instrument gain
+**gain** (_number_) (0 - 1): A number specifying instrument gain
 
 **steps** (_array_) : Array of step arrays for the notes to be played at. Accepts in array in the `[ step, duration, note || [notes] ]` format.
 
@@ -378,7 +378,7 @@ steps={[
 
 **frequency** (_number_)
 
-**gain** (_number_)
+**gain** (_number_) (0 - 1)
 
 **type** (_string_)
 
@@ -387,7 +387,7 @@ steps={[
 
 #### \<Gain />
 
-**amount** (_number_)
+**amount** (_number_) (0 - 1)
 
 
 --
@@ -475,7 +475,7 @@ steps={[
 
 **frequency** (_number_) : LFO frequency
 
-**gain** (_number_) : A number specifying LFO gain
+**gain** (_number_) (0 - 1) : A number specifying LFO gain
 
 **type** (_string_) : Oscillator type. Accepts `square`, `triangle`, `sawtooth` & `sine`
 
