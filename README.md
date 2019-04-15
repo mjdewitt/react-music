@@ -291,7 +291,7 @@ envelope={{
 }}
 ```
 
-**gain** (_number_) (0 - 1): A number specifying instrument gain
+**gain** (_number_) (float 0 - 1): A number specifying instrument gain
 
 **steps** (_array_) : Array of step arrays for the notes to be played at. Accepts in array in the `[ step, duration, note || [notes] ]` format.
 
@@ -378,7 +378,7 @@ steps={[
 
 **frequency** (_number_)
 
-**gain** (_number_) (0 - 1)
+**gain** (_number_) (float 0 - 1)
 
 **type** (_string_)
 
@@ -387,7 +387,7 @@ steps={[
 
 #### \<Gain />
 
-**amount** (_number_) (0 - 1)
+**amount** (_number_) (float 0 - 1)
 
 
 --
@@ -413,7 +413,7 @@ steps={[
 
 **drive** (_number_)
 
-**outputGain** (_number_)
+**outputGain** (_number_) (float 0 - 1)
 
 --
 
@@ -463,7 +463,7 @@ steps={[
 
 #### \<Bus />
 
-**gain** (_number_) : A number specifying Bus gain
+**gain** (_number_) (float 0 - 1) : A number specifying Bus gain
 
 **id** (_string_) : Bus ID
 
@@ -475,7 +475,7 @@ steps={[
 
 **frequency** (_number_) : LFO frequency
 
-**gain** (_number_) (0 - 1) : A number specifying LFO gain
+**gain** (_number_) (float 0 - 1) : A number specifying LFO gain
 
 **type** (_string_) : Oscillator type. Accepts `square`, `triangle`, `sawtooth` & `sine`
 
